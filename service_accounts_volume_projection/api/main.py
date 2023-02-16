@@ -20,7 +20,7 @@ def read_token():
 
 @app.get("/call")
 def call():
-    conn = client.HTTPConnection("http://app.data-store.svc.cluster.local",8080)
+    conn = client.HTTPConnection("app.data-store.svc.cluster.local",8080)
 
     service_token = read_token()
 

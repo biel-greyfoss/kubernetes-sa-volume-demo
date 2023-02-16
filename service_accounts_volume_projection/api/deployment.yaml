@@ -35,7 +35,8 @@ spec:
                 audience: data-store # data-store可以访问
       containers:
       - name: app
-        image: greyfoss/k8s-sa-volume-demo-api:0.0.1 
+        image: greyfoss/k8s-sa-volume-demo-api:0.0.2 
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         volumeMounts:
