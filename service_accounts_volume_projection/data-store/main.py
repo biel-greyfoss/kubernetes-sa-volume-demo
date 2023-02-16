@@ -1,6 +1,6 @@
 from typing import Union
 
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from kubernetes import client, config
 from kubernetes.client.rest import ApiException
 from pprint import pprint
@@ -44,9 +44,11 @@ def verify_token(client_id: str):
 
 
 @app.get("/sensitive")
-def sensitive(header: Union[str, None] = Header(default=None)):
-    print(header)
-    client_id = header.get("X-Client-Id")
+def sensitive(request: Request):
+    client_id = request.headers.get("X-Client-Id", None)
+
+    print(f"client_id is : {client_id}")
+
     if not client_id:
         raise HTTPException(
             status_code=401,
