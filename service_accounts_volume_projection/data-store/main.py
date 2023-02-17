@@ -20,10 +20,7 @@ def read_root():
     return {"Hello": "I am data-store"}
 
 def verify_token(client_id: str):
-    configuration = client.Configuration()
-    # configuration.api_key_prefix['authorization'] = 'Bearer'
-
-    with client.ApiClient(configuration) as api_client:
+    with client.ApiClient() as api_client:
         api_instance = client.AuthenticationV1Api(api_client)
         # Create a V1TokenReview
         body = client.V1TokenReview(
@@ -59,5 +56,3 @@ def sensitive(request: Request):
         return {"Message": "Hello from data store. You have been authenticated"}
     else:
         return {"Message": "Invalid token"}
-        
-

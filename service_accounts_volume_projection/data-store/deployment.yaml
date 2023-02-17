@@ -40,7 +40,7 @@ spec:
       serviceAccount: data-store
       containers:
       - name: app
-        image: greyfoss/k8s-sa-volume-demo-datastore:0.0.2
+        image: greyfoss/k8s-sa-volume-demo-datastore:0.0.3
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
